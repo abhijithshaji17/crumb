@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUMB — Memory Vault & Offline Knowledge Engine</title>
+  <meta name="description" content="CRUMB offline second brain application interface. Access, search, and imprint your personal library offline." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z' fill='%23E8A23D'/%3E%3Cpath d='M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z' fill='%23F4CF93'/%3E%3Ccircle cx='13' cy='27' r='1.6' fill='%23B96F1F' opacity='.55'/%3E%3Ccircle cx='20' cy='30' r='1.6' fill='%23B96F1F' opacity='.4'/%3E%3Ccircle cx='27' cy='27' r='1.6' fill='%23B96F1F' opacity='.55'/%3E%3Cpath d='M18 5c0-2 2-2 2-4M25 6c0-2 2-2 2-4' stroke='%23C9882E' stroke-width='1.5' stroke-linecap='round' opacity='.6'/%3E%3C/svg%3E" />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/landing.css" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="app-viewport" id="appViewport">
+
+  <!-- ================= APP HEADER ================= -->
+  <header class="app-header">
+    <div class="app-brand">
+      <a href="index.html" class="brand" aria-label="CRUMB home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 40 40" fill="none"><path d="M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z" fill="#fff7e6"/><path d="M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z" fill="#ffe9b8"/><circle cx="13" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/><circle cx="20" cy="30" r="1.6" fill="#B96F1F" opacity=".35"/><circle cx="27" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/></svg>
+        </span>
+        <span class="brand-name">CRUMB<em>.</em></span>
+      </a>
+      <div class="offline-pill">
+        <span class="offline-pulse"></span>
+        <span>Offline Vault · Local Library</span>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-sm btn-emergency-toggle" id="btnEmergency" title="Toggle Emergency Knowledge Mode">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span>Emergency Mode</span>
+      </button>
+
+      <a href="index.html" class="btn btn-ghost btn-sm">
+        <span>Landing Page</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- ================= MAIN 3-COLUMN WORKSPACE ================= -->
+  <main class="app-main">
+
+    <!-- ---------- LEFT PANEL: KNOWLEDGE LIBRARY ---------- -->
+    <aside class="panel-left">
+      <div class="panel-header">
+        <div class="panel-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Knowledge Library</span>
+        </div>
+        <span class="chip amber" style="font-size:0.7rem;">5 Slices</span>
+      </div>
+
+      <div class="search-box">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="Search slices or tags..." />
+      </div>
+
+      <div class="slices-list" id="slicesList">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="panel-left-footer">
+        <button class="btn btn-sm btn-upload-slice" id="btnUploadSlice">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span>Add Knowledge Slice</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ---------- CENTER PANEL: CONVERSATION INTERFACE ---------- -->
+    <section class="panel-center">
+
+      <!-- Memory Tray Header -->
+      <div class="memory-tray-bar" id="trayBar">
+        <div class="tray-label">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span>Memory Tray:</span>
+        </div>
+
+        <div class="tray-dropzone" id="trayDropzone">
+          <!-- Active slice chips render here dynamically -->
+        </div>
+
+        <span class="chip" id="trayCountText" style="font-size:0.72rem; flex:none;">2 active sources</span>
+      </div>
+
+      <!-- Chat Conversation Area -->
+      <div class="conversation-area" id="conversationArea">
+
+        <div class="chat-welcome">
+          <div class="welcome-icon">
+            <svg width="26" height="26" viewBox="0 0 40 40" fill="none"><path d="M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z" fill="#fff7e6"/><path d="M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z" fill="#ffe9b8"/><circle cx="13" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/><circle cx="20" cy="30" r="1.6" fill="#B96F1F" opacity=".35"/><circle cx="27" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/></svg>
+          </div>
+          <h2 class="welcome-title">Search your local library</h2>
+          <p class="welcome-sub">Select active knowledge slices in the Memory Tray above to focus your query across stored documents.</p>
+
+          <div class="prompt-chips">
+            <button class="prompt-btn" data-prompt="Explain Dijkstra's Algorithm">⚙️ Explain Dijkstra's Algorithm</button>
+            <button class="prompt-btn" data-prompt="How do I purify water in an emergency?">▲ How do I purify water?</button>
+            <button class="prompt-btn" data-prompt="What are CPR compression rules?">✚ CPR Rules &amp; Ratios</button>
+            <button class="prompt-btn" data-prompt="Explain Ohm's Law and Power formula">⚡ Ohm's Law Formula</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Chat Input Area -->
+      <div class="chat-input-container">
+        <form class="chat-form" id="chatForm">
+          <textarea class="chat-textarea" id="chatInput" placeholder="Ask a question from your active memory slices (e.g., 'How to purify water?')..." rows="1"></textarea>
+          <button type="submit" class="chat-send-btn" title="Send question">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+
+    </section>
+
+    <!-- ---------- RIGHT PANEL: MEMORY IMPRINT VIEW ---------- -->
+    <aside class="panel-right">
+      
+      <!-- Imprint View Tabs -->
+      <div class="imprint-tabs">
+        <button class="tab-btn active" data-tab="takeaways">Takeaways</button>
+        <button class="tab-btn" data-tab="flashcards">Flashcards</button>
+        <button class="tab-btn" data-tab="quiz">Quiz</button>
+        <button class="tab-btn" data-tab="graph">Mind Map</button>
+      </div>
+
+      <div class="imprint-content">
+
+        <!-- TAB 1: TAKEAWAYS -->
+        <div class="tab-panel" id="tab-takeaways" style="display:block;">
+          <div id="takeawayContent">
+            <!-- Dynamically populated by app.js -->
+          </div>
+        </div>
+
+        <!-- TAB 2: FLASHCARDS -->
+        <div class="tab-panel" id="tab-flashcards" style="display:none;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span id="flashcardTopic" style="font-size:0.78rem; font-weight:600; color:var(--amber);">Card 1 of 2</span>
+            <span style="font-size:0.75rem; color:var(--ink-soft);">Click card to flip 🔄</span>
+          </div>
+
+          <div class="flashcard-container">
+            <div class="flashcard-inner" id="flashcardInner">
+              <div class="flashcard-face flashcard-front">
+                <div class="card-topic">Question</div>
+                <div class="card-text" id="flashcardFrontText">What is the time complexity of Dijkstra's Algorithm?</div>
+                <div class="card-hint">Tap to reveal answer</div>
+              </div>
+              <div class="flashcard-face flashcard-back">
+                <div class="card-topic" style="color:var(--amber-soft);">Answer</div>
+                <div class="card-text" id="flashcardBackText">O((V + E) log V) using a binary heap priority queue.</div>
+                <div class="card-hint">Rate your recall below</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flashcard-controls">
+            <button class="btn-card-action btn-again" id="btnAgain">Review Again (<span id="scoreAgain">0</span>)</button>
+            <button class="btn-card-action btn-easy" id="btnEasy">Got It! (<span id="scoreEasy">0</span>)</button>
+          </div>
+        </div>
+
+        <!-- TAB 3: QUIZ -->
+        <div class="tab-panel" id="tab-quiz" style="display:none;">
+          <div class="quiz-box">
+            <div class="quiz-question" id="quizQuestion">Which data structure optimizes Dijkstra's algorithm?</div>
+            <div class="quiz-options" id="quizOptions">
+              <!-- Dynamically populated options -->
+            </div>
+            <div class="quiz-feedback" id="quizFeedback" style="display:none;"></div>
+          </div>
+        </div>
+
+        <!-- TAB 4: KNOWLEDGE GRAPH -->
+        <div class="tab-panel" id="tab-graph" style="display:none;">
+          <div class="graph-container">
+            <canvas id="graphCanvas"></canvas>
+          </div>
+          <p style="font-size:0.78rem; color:var(--ink-soft); margin-top:10px; text-align:center;">Neural connections between active vault concepts</p>
+        </div>
+
+      </div>
+
+    </aside>
+
+  </main>
+</div>
+
+<!-- ================= UPLOAD SLICE MODAL ================= -->
+<div class="modal-backdrop" id="uploadModal">
+  <div class="modal-card">
+    <button class="modal-close" id="closeModal">&times;</button>
+    <h3 style="font-family:var(--font-display); font-size:1.3rem; margin-bottom:8px; color:var(--navy);">Bake New Knowledge Slice</h3>
+    <p style="font-size:0.88rem; color:var(--ink-soft); margin-bottom:20px;">Drop any PDF, TXT, or markdown document. CRUMB will index and imprint it locally into your offline brain.</p>
+
+    <div class="slices-tray" id="uploadDropzone" style="cursor:pointer; min-height:160px;">
+      <svg class="tray-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <strong>Drag &amp; drop document file</strong>
+      <p>Supports .txt, .md, .json, or .pdf text files</p>
+      <input type="file" id="fileInput" accept=".txt,.md,.json,.pdf" style="display:none;" />
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  if (window.pdfjsLib) {
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  }
+</script>
+<script src="js/app.js"></script>
+</body>
+</html>

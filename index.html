@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CRUMB — The Internet Forgot. CRUMB Didn't.</title>
+<meta name="description" content="CRUMB is an offline knowledge preservation system. Preserve knowledge, learn offline, and access your personal library even when the world goes dark." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z' fill='%23E8A23D'/%3E%3Cpath d='M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z' fill='%23F4CF93'/%3E%3Ccircle cx='13' cy='27' r='1.6' fill='%23B96F1F' opacity='.55'/%3E%3Ccircle cx='20' cy='30' r='1.6' fill='%23B96F1F' opacity='.4'/%3E%3Ccircle cx='27' cy='27' r='1.6' fill='%23B96F1F' opacity='.55'/%3E%3Cpath d='M18 5c0-2 2-2 2-4M25 6c0-2 2-2 2-4' stroke='%23C9882E' stroke-width='1.5' stroke-linecap='round' opacity='.6'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/landing.css" />
+</head>
+<body id="top">
+
+<div class="grain" aria-hidden="true"></div>
+<div class="page-veil" id="pageVeil" aria-hidden="true"><div class="veil-crumb"></div></div>
+
+<!-- ================= NAV ================= -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" href="#top" aria-label="CRUMB home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 40 40" fill="none"><path d="M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z" fill="#fff7e6"/><path d="M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z" fill="#ffe9b8"/><circle cx="13" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/><circle cx="20" cy="30" r="1.6" fill="#B96F1F" opacity=".35"/><circle cx="27" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/></svg>
+      </span>
+      <span class="brand-name">CRUMB<em>.</em></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#slices">Knowledge Slices</a>
+      <a href="#emergency">Emergency Mode</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="app.html" data-nav-link>Create Memory Vault</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="hero-vignette" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <p class="eyebrow hero-eyebrow reveal">Offline Knowledge Preservation · Memory Bread</p>
+    <h1 class="hero-title reveal" data-delay="1">
+      The Internet <em>Forgot.</em><br />
+      CRUMB <span class="hero-didnt">Didn't.</span>
+    </h1>
+    <p class="hero-sub reveal" data-delay="2">
+      Preserve knowledge, learn offline, and access your personal library
+      even when the world goes dark.
+    </p>
+    <div class="hero-cta reveal" data-delay="3">
+      <a class="btn btn-primary btn-lg" href="app.html" data-nav-link>
+        Create Memory Vault
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost btn-lg" href="#how">Explore Demo</a>
+    </div>
+
+    <div class="hero-floats" aria-hidden="true">
+      <div class="float-card float-a glass">
+        <span class="float-dot" style="background:#c05a4a"></span>
+        <div class="float-lines"><i></i><i></i><i></i></div>
+        <span class="float-label">Medicine</span>
+      </div>
+      <div class="float-card float-b glass">
+        <span class="float-dot" style="background:#3d7ec9"></span>
+        <div class="float-lines"><i></i><i></i></div>
+        <span class="float-label">Engineering</span>
+      </div>
+      <div class="float-card float-c glass">
+        <span class="float-dot" style="background:#5aa94f"></span>
+        <div class="float-lines"><i></i><i></i><i></i><i></i></div>
+        <span class="float-label">Survival</span>
+      </div>
+      <div class="float-card float-d slice">
+        <div class="float-lines"><i></i><i></i><i></i></div>
+        <span class="float-label">Personal Notes</span>
+      </div>
+    </div>
+
+    <div class="hero-stats reveal" data-delay="4">
+      <div class="hero-stat"><strong>100%</strong><span>Offline</span></div>
+      <div class="hero-stat"><strong>∞</strong><span>Knowledge kept</span></div>
+      <div class="hero-stat"><strong>0</strong><span>Connections needed</span></div>
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Dijkstra's Algorithm</span><b>✦</b>
+    <span>CPR &amp; First Aid</span><b>✦</b>
+    <span>Ohm's Law</span><b>✦</b>
+    <span>Water Purification</span><b>✦</b>
+    <span>Flashcards</span><b>✦</b>
+    <span>Quizzes</span><b>✦</b>
+    <span>Emergency Guides</span><b>✦</b>
+    <span>Study Guides</span><b>✦</b>
+    <span>Dijkstra's Algorithm</span><b>✦</b>
+    <span>CPR &amp; First Aid</span><b>✦</b>
+    <span>Ohm's Law</span><b>✦</b>
+    <span>Water Purification</span><b>✦</b>
+    <span>Flashcards</span><b>✦</b>
+    <span>Quizzes</span><b>✦</b>
+    <span>Emergency Guides</span><b>✦</b>
+    <span>Study Guides</span><b>✦</b>
+  </div>
+</div>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section how" id="how">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2>Three crumbs. One second brain.</h2>
+      <p>From forgotten PDF to glowing memory — everything happens on your device, never in a cloud.</p>
+    </div>
+    <div class="how-grid">
+      <article class="how-card glass reveal" data-delay="1">
+        <span class="how-num">01</span>
+        <div class="how-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg>
+        </div>
+        <h3>Upload anything</h3>
+        <p>Drop in PDFs, textbooks, manuals, notes and research papers. CRUMB treats every page like a fresh slice of memory bread.</p>
+      </article>
+      <article class="how-card glass reveal" data-delay="2">
+        <span class="how-num">02</span>
+        <div class="how-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M8 4h8"/><circle cx="12" cy="14" r="1.4" fill="currentColor" stroke="none"/><circle cx="16.5" cy="15" r="1.4" fill="currentColor" stroke="none"/><circle cx="7.5" cy="15" r="1.4" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <h3>CRUMB processes locally</h3>
+        <p>Your documents are indexed, summarized and imprinted into searchable knowledge — right on your device. Nothing leaves it.</p>
+      </article>
+      <article class="how-card glass reveal" data-delay="3">
+        <span class="how-num">03</span>
+        <div class="how-icon" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/><path d="M8.5 12.5l2 2 4.5-4.5"/></svg>
+        </div>
+        <h3>Ask, learn, remember</h3>
+        <p>Questions are answered from your vault, with flashcards and quizzes baked in. All of it works with the internet switched off.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURES ================= -->
+<section class="section features" id="features">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Features</span>
+      <h2>Everything a library is.<br />Nothing the cloud needs.</h2>
+      <p>Four capabilities, one quiet promise: your knowledge survives anything.</p>
+    </div>
+
+    <div class="features-grid">
+      <article class="feature-card glass reveal">
+        <div class="feature-visual vault-visual" aria-hidden="true">
+          <div class="mini-slice mini-s-1"><i></i><i></i><i></i></div>
+          <div class="mini-slice mini-s-2"><i></i><i></i><i></i></div>
+          <div class="mini-slice mini-s-3"><i></i><i></i><i></i></div>
+        </div>
+        <div class="feature-body">
+          <h3>Memory Vault</h3>
+          <p>Store and organize documents into knowledge collections — engineering, medicine, survival, notes — each one a warm slice of bread.</p>
+        </div>
+      </article>
+
+      <article class="feature-card glass reveal" data-delay="1">
+        <div class="feature-visual chat-visual" aria-hidden="true">
+          <div class="mini-chat">
+            <div class="mini-bubble mini-user">Explain Dijkstra's Algorithm</div>
+            <div class="mini-bubble mini-ai"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+        <div class="feature-body">
+          <h3>Offline Intelligence</h3>
+          <p>Ask questions and receive answers from stored content — no internet, no API, no tracking. Pure local reasoning.</p>
+        </div>
+      </article>
+
+      <article class="feature-card glass reveal" data-delay="2">
+        <div class="feature-visual imprint-visual" aria-hidden="true">
+          <div class="mini-card">
+            <div class="mini-card-front">
+              <b>Key concept</b>
+              <i></i><i></i><i></i>
+            </div>
+            <div class="mini-card-back"><b>✓ Imprinted</b><span>Flashcard · Quiz · Summary</span></div>
+          </div>
+        </div>
+        <div class="feature-body">
+          <h3>Knowledge Imprint</h3>
+          <p>Every source becomes summaries, key concepts, flashcards, quizzes and study guides — a permanent imprint on your memory.</p>
+        </div>
+      </article>
+
+      <article class="feature-card glass reveal" data-delay="3">
+        <div class="feature-visual vault-visual" aria-hidden="true">
+          <div class="emergency-ring" aria-hidden="true"><span></span></div>
+          <div class="mini-slice mini-s-1 emg"><i></i><i></i></div>
+        </div>
+        <div class="feature-body">
+          <h3>Emergency Knowledge Mode</h3>
+          <p>When the internet dies, critical knowledge doesn't. First aid, disaster guides and manuals stay one tap away.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= KNOWLEDGE SLICES (interactive) ================= -->
+<section class="section slices" id="slices">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Knowledge Slices</span>
+      <h2>Drag. Drop. Remember.</h2>
+      <p>Every uploaded source becomes a digital bread slice. Drop slices into the Memory Tray to make them your active knowledge sources — try it.</p>
+    </div>
+    <div class="slices-demo glass reveal">
+      <div class="slices-rack" id="sliceRack" aria-label="Knowledge slices">
+        <div class="slice demo-slice" draggable="true" data-slice="engineering">
+          <span class="slice-icon" style="background:linear-gradient(150deg,#3d7ec9,#24518f)">⚙</span>
+          <div><div class="slice-name">Engineering</div><div class="slice-meta">3 documents</div></div>
+          <span class="slice-badge">✓</span>
+        </div>
+        <div class="slice demo-slice" draggable="true" data-slice="medicine">
+          <span class="slice-icon" style="background:linear-gradient(150deg,#c05a4a,#8f2f24)">✚</span>
+          <div><div class="slice-name">Medicine</div><div class="slice-meta">4 documents</div></div>
+          <span class="slice-badge">✓</span>
+        </div>
+        <div class="slice demo-slice" draggable="true" data-slice="survival">
+          <span class="slice-icon" style="background:linear-gradient(150deg,#5aa94f,#2e6b26)">▲</span>
+          <div><div class="slice-name">Survival</div><div class="slice-meta">5 documents</div></div>
+          <span class="slice-badge">✓</span>
+        </div>
+        <div class="slice demo-slice" draggable="true" data-slice="electronics">
+          <span class="slice-icon" style="background:linear-gradient(150deg,#b8863a,#7a5117)">⚡</span>
+          <div><div class="slice-name">Electronics</div><div class="slice-meta">4 documents</div></div>
+          <span class="slice-badge">✓</span>
+        </div>
+      </div>
+
+      <div class="slices-tray" id="sliceTray">
+        <div class="tray-inner">
+          <svg class="tray-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h16v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-9z"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <strong>Memory Tray</strong>
+          <p id="trayText">Drop a knowledge slice here</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EMERGENCY ================= -->
+<section class="section emergency" id="emergency">
+  <div class="container">
+    <div class="emergency-panel glass-dark reveal">
+      <div class="emergency-glow" aria-hidden="true"></div>
+      <div class="emergency-copy">
+        <span class="eyebrow" style="color:var(--amber-bright)">Emergency Knowledge Mode</span>
+        <h2>When the world goes dark,<br />your knowledge stays lit.</h2>
+        <p>CRUMB keeps the essentials pre-imprinted so a blackout never means a blank page.</p>
+        <div class="emergency-chips">
+          <span class="chip chip-dark amber">First Aid</span>
+          <span class="chip chip-dark amber">Engineering Manuals</span>
+          <span class="chip chip-dark amber">Disaster Response</span>
+          <span class="chip chip-dark amber">Educational Resources</span>
+        </div>
+        <a class="btn btn-primary btn-lg" href="app.html" data-nav-link>
+          Open the Vault
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="emergency-art" aria-hidden="true">
+        <div class="radar"><span class="radar-sweep"></span><i class="r1"></i><i class="r2"></i><i class="r3"></i></div>
+        <p>Signal: <b>LOCAL</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="section finale">
+  <div class="container finale-inner reveal">
+    <div class="finale-mark" aria-hidden="true">
+      <svg width="72" height="72" viewBox="0 0 40 40" fill="none"><path d="M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z" fill="#fdf3dd"/><path d="M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z" fill="#f6ddac"/><circle cx="13" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/><circle cx="20" cy="30" r="1.6" fill="#B96F1F" opacity=".35"/><circle cx="27" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/></svg>
+    </div>
+    <h2>Carry humanity's memory<br />in your pocket.</h2>
+    <p>No cloud. No signal. No problem.</p>
+    <div class="finale-cta">
+      <a class="btn btn-primary btn-lg" href="app.html" data-nav-link>Create Memory Vault</a>
+      <a class="btn btn-ghost-dark btn-lg" href="#how">Explore Demo</a>
+    </div>
+    <p class="finale-tag">“A crumb of knowledge. A lifetime of memory.”</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container footer-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 40 40" fill="none"><path d="M6 20c0-8 5-12 14-12s14 4 14 12v8a6 6 0 0 1-6 6H12a6 6 0 0 1-6-6v-8z" fill="#fff7e6"/><path d="M6 20c0-8 5-12 14-12s14 4 14 12v2H6v-2z" fill="#ffe9b8"/><circle cx="13" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/><circle cx="20" cy="30" r="1.6" fill="#B96F1F" opacity=".35"/><circle cx="27" cy="27" r="1.6" fill="#B96F1F" opacity=".5"/></svg>
+      </span>
+      <span class="brand-name">CRUMB<em>.</em></span>
+    </a>
+    <p class="footer-tagline">Offline knowledge preservation · inspired by the Memory Bread</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#emergency">Emergency Mode</a>
+      <a href="app.html">Open Vault</a>
+    </nav>
+    <p class="footer-note">Works entirely offline. Your knowledge never leaves your device.</p>
+  </div>
+</footer>
+
+<script src="js/hero-canvas.js"></script>
+<script src="js/landing.js"></script>
+</body>
+</html>
