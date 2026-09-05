@@ -115,7 +115,7 @@ Then visit:
 ---
 ## ✒️ Note from the maker 
 
-The tool is all yours people 💛.<br>Feel free to leave an issue or raise a pr if you found something off, I would love to see you contribute to CRUMB. 
+The tool is all yours people 💛.<br>Feel free to leave an issue or raise a pr — if you found something off, I would love to see you contribute to CRUMB. 
 
 ---
 ## 📜 License
