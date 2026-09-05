@@ -125,7 +125,7 @@ Distributed under the MIT License. See `LICENSE` for details.
 ---
 
 <p align="center">
-Made by a Doraemon fan 💙 •  **[Make-A-Ton 9.0](https://makeaton.in)**
+  Made by a Doraemon fan 💙 • <a href="https://makeaton.in"><strong>Make-A-Ton 9.0</strong></a>
 </p>
 
 
