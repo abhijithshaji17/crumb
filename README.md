@@ -1,7 +1,7 @@
 <div align="center">
 
   <h1>𝑪𝑹𝑼𝑴𝑩🍞</h1>
-  <p><strong>"A crumb of knowledge = lifetime of memory."</strong></p>
+  <p><strong>"𝐴 𝑐𝑟𝑢𝑚𝑏 𝑜𝑓 𝑘𝑛𝑜𝑤𝑙𝑒𝑑𝑔𝑒 = 𝑙𝑖𝑓𝑒𝑡𝑖𝑚𝑒 𝑜𝑓 𝑚𝑒𝑚𝑜𝑟𝑦"</strong></p>
 
   <p>
     An offline knowledge preservation system inspired by Doraemon's Memory Bread.
@@ -125,7 +125,7 @@ Distributed under the MIT License. See `LICENSE` for details.
 ---
 
 <p align="center">
-  𝑀𝑎𝑑𝑒 𝑏𝑦 𝑎 𝐷𝑜𝑟𝑎𝑒𝑚𝑜𝑛 𝑓𝑎𝑛💙 • <a href="https://makeaton.in"><strong>@OFFGRID - Make-A-Ton 9.0</strong></a>
+  𝐌𝐚𝐝𝐞 𝐛𝐲 𝐚 𝐭𝐫𝐮𝐞 𝐃𝐨𝐫𝐚𝐞𝐦𝐨𝐧 𝐟𝐚𝐧💙 • <a href="https://makeaton.in"><strong>@OFFGRID - Make-A-Ton 9.0</strong></a>
 </p>
 
 
