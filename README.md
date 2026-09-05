@@ -32,30 +32,30 @@ In a world where internet infrastructure disappears or goes dark during blackout
 
 ## ✨ Key Features
 
-### 🍞 1. Digital Knowledge Slices & 3D Layer Inspector
+### 🍞 Digital Knowledge Slices & 3D Layer Inspector
 Every uploaded book, manual, or document is visualized as a physical bread-slice card.
 
-### 📥 2. Interactive Memory Tray
+### 📥 Interactive Memory Tray
 Users drag or click Knowledge Slices into a glowing **Memory Tray**. When active, the tray scopes local queries to *only* the active sources in the tray, producing fast, context-focused responses.
 
-### ⚡ 3. 100% Offline Search Engine
+### ⚡ 100% Offline Search Engine
 Performs client-side keyword indexing and natural language document retrieval. Zero API keys, zero network requests, and complete privacy.
 
-### 🧠 4. Memory Imprint Engine
+### 🧠 Memory Imprint Engine
 Turns passive reading into active human memory retention:
 * **Key Takeaways**: Bulleted summaries extracted directly from stored documents.
 * **3D Flip Flashcards**: Self-testing flashcards with recall scoring (*"Got It"* vs. *"Review Again"*).
 * **Interactive Quizzes**: Multiple-choice question generator with instant explanation feedback.
 * **Knowledge Mind Map**: HTML5 Canvas graph visualizer displaying neural connections between concepts.
 
-### 🚨 5. Emergency Knowledge Mode
+### 🚨 Emergency Knowledge Mode
 One-click high-visibility emergency dark mode interface. Automatically loads critical survival guides, including:
 * **CPR & First Aid Protocols**
 * **Emergency Water Purification** (Boiling, Bleach ratios, SODIS)
 * **Debris Hut Shelter & Thermal Insulation**
 * **Off-Grid Solar & Battery Setup**
 
-### 📄 6. PDF & Text Importer
+### 📄 PDF & Text Importer
 Integrated client-side **PDF.js** parser. Drag and drop `.pdf`, `.txt`, `.md`, or `.json` files to extract text page-by-page directly in your browser without binary stream noise.
 
 ---
@@ -109,6 +109,7 @@ python -m http.server 8080
 Then visit:
 * **Landing Page**: [`http://localhost:8080/index.html`](http://localhost:8080/index.html)
 * **Vault Application**: [`http://localhost:8080/app.html`](http://localhost:8080/app.html)
+<br>
 [Your local hosts]
 
 ---
