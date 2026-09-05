@@ -123,11 +123,11 @@ The tool is all yours people 💛. Feel free to leave an issue or raise a pr if 
 Distributed under the MIT License. See `LICENSE` for details.
 
 ---
----
 
 <p align="center">
 𝑀𝑎𝑑𝑒 𝑏𝑦 𝑎 𝐷𝑜𝑟𝑎𝑒𝑚𝑜𝑛 𝑓𝑎𝑛 💙 • [Make-A-Ton 9.0](https://makeaton.in) 
 </p>
+---
 
 
 
