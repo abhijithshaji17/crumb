@@ -57,8 +57,8 @@ html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   margin: 0;
   font-family: var(--font-body);
-  background: var(--cream);
-  color: var(--ink);
+  background: #080d16;
+  color: #FFFFFF;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;

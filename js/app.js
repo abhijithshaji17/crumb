@@ -425,7 +425,13 @@ Treatment: Call emergency services immediately. Rapid cooling is top priority: s
           <div class="slice-title">${item.title}</div>
           <div class="slice-sub">${item.docCount} docs · ${item.pages} pages</div>
         </div>
+        <button class="btn-inspect-slice" title="Inspect inner document layers">Layers 🔍</button>
       `;
+
+      card.querySelector(".btn-inspect-slice").addEventListener("click", (e) => {
+        e.stopPropagation();
+        openSliceInspector(item.id);
+      });
 
       // Click to toggle in/out of tray
       card.addEventListener("click", () => toggleSliceInTray(item.id));
@@ -1125,6 +1131,144 @@ Treatment: Call emergency services immediately. Rapid cooling is top priority: s
       toast.style.transform = "translateY(10px)";
       setTimeout(() => toast.remove(), 300);
     }, 3200);
+  }
+
+  // ------------------------------------------------------------
+  // SLICE LAYER INSPECTOR & GOLDEN PARTICLE DOUGH LOOP ENGINE
+  // ------------------------------------------------------------
+  const elInspectorModal = document.getElementById("sliceInspectorModal");
+  const elCloseInspectorModal = document.getElementById("closeInspectorModal");
+  const elIsometricStack = document.getElementById("isometricStack");
+  const elInspectorTitle = document.getElementById("inspectorTitle");
+  const elInspectorCategoryTag = document.getElementById("inspectorCategoryTag");
+  const elSliceParticleCanvas = document.getElementById("sliceParticleCanvas");
+  let inspectorRaf = null;
+
+  if (elCloseInspectorModal) {
+    elCloseInspectorModal.addEventListener("click", () => {
+      if (elInspectorModal) elInspectorModal.classList.remove("active");
+      if (inspectorRaf) cancelAnimationFrame(inspectorRaf);
+    });
+  }
+
+  function openSliceInspector(id) {
+    const item = libraryData.find(l => l.id === id);
+    if (!item || !elInspectorModal || !elIsometricStack) return;
+
+    if (elInspectorTitle) elInspectorTitle.textContent = item.title;
+    if (elInspectorCategoryTag) elInspectorCategoryTag.textContent = `Category: ${item.category}`;
+
+    let blueprintSvg = getBlueprintSvgForCategory(item.id);
+
+    elIsometricStack.innerHTML = `
+      <div class="layer-card">
+        <span class="layer-badge">Layer 1: Blueprints &amp; Technical Schematics</span>
+        <div class="layer-title">Visual Knowledge Blueprint</div>
+        <p style="font-size:0.84rem; color:var(--slate);">Interactive vector blueprint embedded inside this knowledge slice.</p>
+        <div class="layer-blueprint-svg">${blueprintSvg}</div>
+      </div>
+
+      <div class="layer-card">
+        <span class="layer-badge">Layer 2: Document &amp; Formula Stream</span>
+        <div class="layer-title">Indexed Chapter Text</div>
+        <p style="font-size:0.86rem; color:#e2e8f0; line-height:1.5;">${item.content[0] ? item.content[0].summary : "Document streams indexed into memory bread."}</p>
+      </div>
+
+      <div class="layer-card">
+        <span class="layer-badge">Layer 3: Field Notes &amp; Marginalia</span>
+        <div class="layer-title">Emergency Annotations</div>
+        <ul style="font-size:0.84rem; color:var(--amber-soft); padding-left:18px; margin:6px 0 0;">
+          ${item.content[0] && item.content[0].takeaways ? item.content[0].takeaways.map(t => `<li>${t}</li>`).join("") : "<li>Field notes imprinted.</li>"}
+        </ul>
+      </div>
+    `;
+
+    elInspectorModal.classList.add("active");
+    startGoldenParticleDoughLoop();
+  }
+
+  function getBlueprintSvgForCategory(id) {
+    if (id === "engineering") {
+      return `<svg width="100%" height="90" viewBox="0 0 400 90" fill="none"><circle cx="60" cy="45" r="18" stroke="#eda63e" stroke-width="2" fill="rgba(237,166,62,0.1)"/><text x="60" y="49" fill="#eda63e" font-size="11" text-anchor="middle">Start</text><line x1="78" y1="45" x2="160" y2="45" stroke="#eda63e" stroke-width="1.5" stroke-dasharray="4 3"/><circle cx="178" cy="45" r="18" stroke="#3d7ec9" stroke-width="2" fill="rgba(61,126,201,0.1)"/><text x="178" y="49" fill="#3d7ec9" font-size="11" text-anchor="middle">v1</text><line x1="196" y1="45" x2="280" y2="45" stroke="#eda63e" stroke-width="1.5"/><circle cx="298" cy="45" r="18" stroke="#5aa94f" stroke-width="2" fill="rgba(90,169,79,0.1)"/><text x="298" y="49" fill="#5aa94f" font-size="11" text-anchor="middle">Dest</text></svg>`;
+    } else if (id === "medicine") {
+      return `<svg width="100%" height="90" viewBox="0 0 400 90" fill="none"><path d="M40 45h60l15-25 20 50 20-35 15 10h70" stroke="#c05a4a" stroke-width="2.5" stroke-linecap="round"/><circle cx="270" cy="45" r="14" stroke="#eda63e" stroke-width="2"/><text x="270" y="49" fill="#eda63e" font-size="10" text-anchor="middle">110 bpm</text></svg>`;
+    } else if (id === "survival") {
+      return `<svg width="100%" height="90" viewBox="0 0 400 90" fill="none"><rect x="50" y="20" width="120" height="50" rx="8" stroke="#5aa94f" stroke-width="1.5" fill="rgba(90,169,79,0.1)"/><text x="110" y="48" fill="#5aa94f" font-size="11" text-anchor="middle">DIY Sand &amp; Charcoal</text><path d="M170 45h70" stroke="#eda63e" stroke-width="1.5" stroke-dasharray="3 3"/><text x="280" y="48" fill="#eda63e" font-size="11">Boil 1 Min ➜ Pure</text></svg>`;
+    } else {
+      return `<svg width="100%" height="90" viewBox="0 0 400 90" fill="none"><rect x="40" y="25" width="80" height="40" rx="6" stroke="#b8863a" stroke-width="1.5"/><text x="80" y="48" fill="#b8863a" font-size="10" text-anchor="middle">Solar Panel</text><line x1="120" y1="45" x2="200" y2="45" stroke="#eda63e" stroke-width="1.5"/><rect x="200" y="25" width="80" height="40" rx="6" stroke="#3d7ec9" stroke-width="1.5"/><text x="240" y="48" fill="#3d7ec9" font-size="10" text-anchor="middle">MPPT Charge</text></svg>`;
+    }
+  }
+
+  function startGoldenParticleDoughLoop() {
+    if (!elSliceParticleCanvas) return;
+    const canvas = elSliceParticleCanvas;
+    const ctx = canvas.getContext("2d");
+    let w = (canvas.width = canvas.parentElement.clientWidth || 600);
+    let h = (canvas.height = canvas.parentElement.clientHeight || 450);
+
+    const particleCount = 70;
+    const particles = [];
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 2.2 + 0.8,
+        angle: Math.random() * Math.PI * 2,
+        speed: 0.015 + Math.random() * 0.02,
+        radius: 40 + Math.random() * 120,
+        alpha: Math.random() * 0.7 + 0.3
+      });
+    }
+
+    let time = 0;
+
+    function renderLoop() {
+      ctx.clearRect(0, 0, w, h);
+      time += 0.02;
+
+      const cx = w / 2;
+      const cy = h / 2;
+
+      particles.forEach(p => {
+        p.angle += p.speed;
+        const cycle = (Math.sin(time * 0.8 + p.r) + 1) / 2;
+        const curRadius = p.radius * (0.3 + 0.7 * cycle);
+
+        p.x = cx + Math.cos(p.angle) * curRadius;
+        p.y = cy + Math.sin(p.angle * 1.2) * (curRadius * 0.7);
+
+        ctx.fillStyle = `rgba(237, 166, 62, ${p.alpha * cycle})`;
+        ctx.shadowColor = "#eda63e";
+        ctx.shadowBlur = 10 * cycle;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      });
+
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(1 + 0.04 * Math.sin(time), 1 + 0.04 * Math.cos(time));
+      ctx.strokeStyle = "rgba(237, 166, 62, 0.4)";
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      const rx = -60, ry = -40, rw = 120, rh = 80, rr = 16;
+      ctx.moveTo(rx + rr, ry);
+      ctx.arcTo(rx + rw, ry, rx + rw, ry + rh, rr);
+      ctx.arcTo(rx + rw, ry + rh, rx, ry + rh, rr);
+      ctx.arcTo(rx, ry + rh, rx, ry, rr);
+      ctx.arcTo(rx, ry, rx + rw, ry, rr);
+      ctx.closePath();
+      ctx.stroke();
+      ctx.restore();
+
+      inspectorRaf = requestAnimationFrame(renderLoop);
+    }
+
+    if (inspectorRaf) cancelAnimationFrame(inspectorRaf);
+    inspectorRaf = requestAnimationFrame(renderLoop);
   }
 
   // ------------------------------------------------------------

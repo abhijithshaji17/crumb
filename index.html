@@ -17,6 +17,12 @@
 <div class="grain" aria-hidden="true"></div>
 <div class="page-veil" id="pageVeil" aria-hidden="true"><div class="veil-crumb"></div></div>
 
+<!-- ================= 300-FRAME FULL LANDING PAGE BACKGROUND CANVAS ================= -->
+<div class="landing-frame-bg" aria-hidden="true">
+  <canvas id="heroFrameCanvas"></canvas>
+  <div class="hero-vignette"></div>
+</div>
+
 <!-- ================= NAV ================= -->
 <header class="nav" id="nav">
   <div class="container nav-inner">
@@ -41,7 +47,6 @@
 <!-- ================= HERO ================= -->
 <section class="hero" id="hero">
   <canvas id="heroCanvas" aria-hidden="true"></canvas>
-  <div class="hero-vignette" aria-hidden="true"></div>
 
   <div class="container hero-inner">
     <p class="eyebrow hero-eyebrow reveal">Offline Knowledge Preservation · Memory Bread</p>
@@ -58,7 +63,7 @@
         Create Memory Vault
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a class="btn btn-ghost btn-lg" href="#how">Explore Demo</a>
+      <a class="btn btn-ghost-dark btn-lg" href="#how">Explore Demo</a>
     </div>
 
     <div class="hero-floats" aria-hidden="true">
@@ -326,5 +331,6 @@
 
 <script src="js/hero-canvas.js"></script>
 <script src="js/landing.js"></script>
+<script src="js/scroll-sequence.js"></script>
 </body>
 </html>

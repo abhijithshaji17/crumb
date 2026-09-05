@@ -214,6 +214,23 @@
       <p>Supports .txt, .md, .json, or .pdf text files</p>
       <input type="file" id="fileInput" accept=".txt,.md,.json,.pdf" style="display:none;" />
     </div>
+<!-- ================= SLICE LAYER INSPECTOR MODAL ================= -->
+<div class="modal-backdrop" id="sliceInspectorModal">
+  <div class="modal-card slice-inspector-modal">
+    <canvas class="inspector-canvas-bg" id="sliceParticleCanvas"></canvas>
+    <button class="modal-close" id="closeInspectorModal" style="color:var(--cream); z-index:10;">&times;</button>
+    <div class="inspector-body">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px;">
+        <span class="chip amber" id="inspectorCategoryTag">Category: Engineering</span>
+        <span style="font-size:0.75rem; color:var(--slate);">Seamless Infinite Particle Loop ✦</span>
+      </div>
+      <h2 id="inspectorTitle" style="font-family:var(--font-display); font-size:1.6rem; color:#fff; margin-bottom:6px;">Engineering Fundamentals</h2>
+
+
+      <div class="isometric-stack" id="isometricStack">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
   </div>
 </div>
 

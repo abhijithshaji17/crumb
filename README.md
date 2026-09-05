@@ -1,7 +1,7 @@
 <div align="center">
 
-  <h1>🍞 CRUMB</h1>
-  <p><strong>"A crumb of knowledge. A lifetime of memory."</strong></p>
+  <h1>𝑪𝑹𝑼𝑴𝑩🍞</h1>
+  <p><strong>"A crumb of knowledge = lifetime of memory."</strong></p>
 
   <p>
     An offline knowledge preservation system inspired by Doraemon's Memory Bread.
@@ -32,8 +32,8 @@ In a world where internet infrastructure disappears or goes dark during blackout
 
 ## ✨ Key Features
 
-### 🍞 1. Digital Knowledge Slices
-Every uploaded book, manual, or document is visualized as a physical, bread-slice inspired card with crust gradients, page metrics, and visual categories.
+### 🍞 1. Digital Knowledge Slices & 3D Layer Inspector
+Every uploaded book, manual, or document is visualized as a physical bread-slice card.
 
 ### 📥 2. Interactive Memory Tray
 Users drag or click Knowledge Slices into a glowing **Memory Tray**. When active, the tray scopes local queries to *only* the active sources in the tray, producing fast, context-focused responses.
@@ -66,8 +66,8 @@ CRUMB combines Apple-inspired minimalism with a warm, tactile bread & parchment 
 
 * **Color Palette**: Cream (`#f7f0e1`), Parchment (`#efe4cb`), Golden Amber (`#c9882e`), and Deep Navy (`#0b1829`).
 * **Typography**: **Fraunces** (Warm display serif) & **Inter** (Clean technical sans-serif).
-* **Visual Effects**: Soft glassmorphism (`backdrop-filter: blur(20px)`), subtle SVG film grain, and custom cubic-bezier spring transitions.
-* **Hero Animation**: HTML5 Canvas particle engine in `hero-canvas.js` rendering floating document pages, dynamic neural lines, and document-to-card baking animations.
+* **Visual Effects**: Soft glassmorphism (`backdrop-filter: blur(20px)`), subtle SVG film grain, 3D isometric layer cards, and custom cubic-bezier spring transitions.
+* **Animation Engines**: HTML5 Canvas particle engines powering floating document pages, neural network connections, and the infinite golden dough swirl loop.
 
 ---
 
@@ -76,15 +76,15 @@ CRUMB combines Apple-inspired minimalism with a warm, tactile bread & parchment 
 ```
 crumb/
 ├── index.html           # Landing page with interactive hero canvas & drag-and-drop demo
-├── app.html             # 3-column Memory Vault application interface
+├── app.html             # 3-column Memory Vault workspace & 3D Slice Layer Inspector
 ├── css/
-│   ├── tokens.css       # Design system tokens, variables & base reset
+│   ├── tokens.css       # Design system tokens, color variables & base reset
 │   ├── landing.css      # Landing page styles, hero canvas & marquee
-│   └── app.css          # Vault workspace, Memory Tray, flashcards & emergency mode
+│   └── app.css          # Workspace 3-column grid, Memory Tray, 3D stack & dark mode
 ├── js/
 │   ├── hero-canvas.js   # Particle engine for floating document pages & neural lines
 │   ├── landing.js       # Scroll reveal, navbar blur & landing drag-and-drop rack
-│   └── app.js           # Vault engine, Memory Tray, PDF.js parser & quiz runner
+│   └── app.js           # Vault engine, Memory Tray, 3D Slice Inspector & PDF.js parser
 ├── LICENSE              # License file
 └── README.md            # Project documentation
 ```
