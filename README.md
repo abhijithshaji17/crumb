@@ -109,6 +109,7 @@ python -m http.server 8080
 Then visit:
 * **Landing Page**: [`http://localhost:8080/index.html`](http://localhost:8080/index.html)
 * **Vault Application**: [`http://localhost:8080/app.html`](http://localhost:8080/app.html)
+[Your local hosts]
 
 ---
 
